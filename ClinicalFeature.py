@@ -7,9 +7,11 @@ class ClinicalFeature():
     state, stateOrder), and the third is a value.  The value is of arbitrary
     format, and is represented as a string.
 
-    Comment: I am assuming that this data will NOT be stored in memory
-    all at once, that the common operations involve processing one
-    line of data at a time.
+    Question: would it be correct to assume that all of these values are unique
+    per feature, i.e. that any feature can have no more than one shortTitle, longTitle,
+    state?
+
+    Question: would a sort method be useful?
     """
 
     __format__ = {
@@ -23,29 +25,31 @@ class ClinicalFeature():
     }
 
 
-    def __init__(self, filehandle):
-        """Given a handle to a file containing clinical feature data (the file
-        is assumed to be open for reading), return a new
-        ClinicalFeature object.
+    def __init__(self, clinicalFeatureMetadata, validate=True):
+        """Given a clinical feature metadata object, load the
+        corresponding ClinicalFeature object.  By default, the new
+        object is validated, and if it fails validation, None is
+        returned.  Otherwise, the ClinicalFeature object is returned.  """
 
-        Here again, I'm assuming that the constructor will take one initial
-        pass through the file to collect the list of samples and clinical 
-        features and verify the file format.  Note, I'm almost tempted to omit
-        this functionality from this class, but it's consistent with the other
-        classes.
+    def featuresByName(self, name):
+        """Return the list of features pertaining to the named feature"""
+
+    def featuresByType(self, type):
+        """Return the list of features of the indicated type"""
+
+    def nClinicalFeatures(self, name=None):
+        """Return the number of clinical features in this object.
+        If name is specified, return only the number of features relating
+        to the named feature.  Otherwise, return the total number of features
+        in this set.
         """
 
-    def read(self, clinicalFeatureName=None):
-        """Read a single row from the file and return the contents in a list
-        (or tuple?).  If the clinicalFeatureName is None, return the
-        data from the next line in the file.  Else, return the data
-        for the indicated clinical feature, or None if the feature is
-        not found.
+    def validate(self):
+        """Validate this ClinicalFeature. Return True or False depending on whether or
+        not the object passed validation.
         """
 
-    def clinicalFeatureList(self):
-        """Return the list of clinical features contained in this feature"""
+    def write(self, filename):
+        """Write the ClinicalFeature object to the indicated filename"""
 
-    def nClinicalFeatures(self):
-        """Return the number of clinical features in this feature"""
 

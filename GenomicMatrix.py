@@ -1,4 +1,6 @@
 
+from cgDataV2.GenomicMatrixMetadata import GenomicMatrixMetadata
+
 import sys
 
 class GenomicMatrix():
@@ -7,16 +9,6 @@ class GenomicMatrix():
     rows representing probes and the columns representing samples.
     Each cell, representing the intersection of one probe and one
     sample, represents one single experimental observation
-
-    Comment: I feel like the GenomicMatrix object should actually be a list of 
-    GenomicVector classes, where each GenomicVector contains a probe ID and 
-    a vector of floats (or perhaps a hash keyed by the sample name).  If that
-    seems like too much abstraction, speak up now.
-
-    Comment: How should we write out a new GenomicMatrix?  Should we 
-    even provide such a method?  I've provided a way to write out 
-    a GenomicVector, but one would still need to write out the first line
-    with the sample names.
     """
     __format__ = {
         "name" : "genomicMatrix",
@@ -31,44 +23,41 @@ class GenomicMatrix():
             }
         }
 
-    def __init__(self, filehandle):
-        """Given a handle to a file containing the GenomicMatrix data, 
-        return a new GenomicMatrix object.  The file is assumed to be
-        open for reading.
-
-        Comments: perhaps the constructor could read through the file once,
-        collect the list of probes, perform a rudimentary format check, and
-        then reopen to the beginning of the file.  It would incur some overhead,
-        but would permit some useful housekeeping.
-        """
-
-    def read(self, probe=None):
-        """Read a single row from the file and return the contents in a
-        GenomicVector object.  If the probe is None, return the next
-        GenomicVector in the file.  Else, return the next
-        GenomicVector for the indicated probe, or None if the probe is
-        not found.
+    def __init__(self, genomicMatrixMetadata, validate=True):
+        """Given a genomic matrix metadata object, load the
+        corresponding GenomicMatrix object.  By default, the new
+        object is validated, and if it fails validation, None is
+        returned.  Otherwise, the GenomicMatrix object is returned.
         """
 
     def probeList(self):
         """Return the list of probes represented in this GenomicMatrix
-
-        Comments: if the constructor makes one initial pass through the file
-        (see __init()__), then the probeList could be stored internally.
         """
 
     def sampleList(self):
         """Return the list of samples represented in this GenonicMatrix"""
+
+    def observationsByProbe(self, probe):
+        """Given a probe, return a vector of the experimental observations
+        from the GenomicMatrix for this probe
+
+        Question: would it be most useful if the data was returned as a
+        vector or a dictionary keyed by sample?
+        """
+
+    def observationsBySample(self, sample):
+        """Given the name of a sample from the GenomicMatrix, return the
+        set of experimental observations for this sample.
+
+        Question: would it be most useful if the data was returned as a
+        vector or a dictionary keyed by probe?
+        """
 
     def getValue(self, probe, sample):
         """Get the data value for the indicated probe and sample"""
 
     def setValue(self, probe, sample, newValue):
         """Update the value stored for the indicated probe and sample
-        
-        Comment: I wonder if I should bother with this.  I'm not sure how
-        I'm going to store the change, and I'm not sure if this functionality
-        is necessary.
         """
 
     def nProbes(self):
@@ -77,5 +66,11 @@ class GenomicMatrix():
     def nSamples(self):
         """Return the number of samples in this GenomicMatrix"""
 
+    def validate(self):
+        """Validate this GenomicMatrix. Return True or False depending on whether or
+        not the object passed validation.
+        """
 
+    def write(self, filename):
+        """Write the GenomicMatrix object to the indicated filename"""
 
