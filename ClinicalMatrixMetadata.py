@@ -1,4 +1,5 @@
 
+import cgDataV2.Exceptions
 from cgDataV2.Metadata import Metadata
 
 class ClinicalMatrixMetadata(Metadata):
@@ -7,14 +8,23 @@ class ClinicalMatrixMetadata(Metadata):
     metadata may contain references to the CinicalFeature metadata.
     """
 
-    def __init__(self, filename, validate=True):
+    def __init__(self, filename):
         """Given the pathname of a genomic metadata file, return the
-        corresponding metadata object.  By default, run the validator
-        method on the new object and return None if validation fails.
+        corresponding metadata object.  Upon creation, run the validator
+        method on the new object and throw a ValidationFailed exception if
+        unsuccessful.
         """
-        super(Metadata, self).__init__(filename, validate=validate)
+        super(Metadata, self).__init__(filename)
+        pass
 
+    def __validate(self):
+        """Validate this GenomicMatrixMetadata object, and throw a
+        ValidationFailed exception if unsuccessful.
+        """
+        pass
+        
     def clinicalFetureMetadata(self):
         """Return the clinicalFeature metadata object, or None if none is loaded.
         """
+        pass
 

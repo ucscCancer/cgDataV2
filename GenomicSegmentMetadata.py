@@ -1,3 +1,4 @@
+import cgDataV2.Exceptions
 from cgDataV2.GenomicMetadata import GenomicMetadata
 
 class GenomicSegmentMetadata(GenomicMetadata):
@@ -6,22 +7,27 @@ class GenomicSegmentMetadata(GenomicMetadata):
     metadata describes the assembly
     """
 
-    def __init__(self, filename, validate=True):
+    def __init__(self, filename,):
         """Given the pathname of a genomic metadata file, return the
-        corresponding metadata object.  By default, run the validator
-        method on the new object and return None if validation fails.
+        corresponding metadata object.  
         """
         super(Metadata, self).__init__(filename, validate=validate)
+        pass
 
-
+    def __validate(self):
+        """Validate, and throw a ValidationFailed exception if unsuccessful"""
+        pass
+    
     def assembly(self, newAssembly=None):
         """Update the assembly if a new value is specified.
         Return the assembly, or None if not defined.
         """
+        pass
 
     def sampleMapMetadata(self):
         """Return the sampleMap metadata object, or None if none is loaded.
         """
+        pass
 
     def subtype(self, newSubtyle=None):
         """The subtype indicates the type of GenomicMatrix data.  It is one
@@ -36,4 +42,4 @@ class GenomicSegmentMetadata(GenomicMetadata):
 
         Return the subtype value.
         """
-    
+        pass

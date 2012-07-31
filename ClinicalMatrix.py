@@ -1,53 +1,71 @@
+import cgDataV2.Exceptions
 
-class ClinicalMatrix():
+
+class ClinicalMatrix(object):
     """A ClinicalMatrix object contains the clinical data associated with
     a given set of samples.  In this matrix, the rows are samples and
     the columns are clinical features.  Missing values are denoted as blanks.
     """
 
-    __format__ = {
-        "name" : "clinicalMatrix",
-        "type" : "type",
-        "form" : "matrix",
-        "rowType" : "idMap",
-        "colType" : "clinicalFeature",
-        "valueType" : "str",
-        "nullString" : ""
-    }
+#    __format__ = {
+#        "name" : "clinicalMatrix",
+#        "type" : "type",
+#        "form" : "matrix",
+#        "rowType" : "idMap",
+#        "colType" : "clinicalFeature",
+#        "valueType" : "str",
+#        "nullString" : ""
+#    }
 
 
-    def __init__(self, clinicalMatrixMetadata, validate=True):
+    def __init__(self, clinicalMatrixMetadata):
         """Given a clinical matrix metadata object, load the
-        corresponding ClinicalMatrix object.  By default, the new
-        object is validated, and if it fails validation, None is
-        returned.  Otherwise, the ClinicalMatrix object is returned.  """
+        corresponding ClinicalMatrix object.  Upon creation, the new
+        object is validated, and if it fails validation, a ValidationFailed
+        exception is thrown.   """
+        pass
 
+    def __validate(self):
+        """Validate this ClinicalMatrix, and throw a 
+        ValidationFailed exception if unsuccessful.  """
+        pass
 
-
-    def sampleList(self):
-        """Return the list of samples represented in this matrix"""
 
     def clinicalFeatureList(self):
         """Return the list of clinical features contained in this matrix"""
+        pass
 
+    def compareSampleIds(id1, id2):
+        """Return the results of a lexical comparison between the two IDs"""
+        pass
+    
     def getValue(self, sampleId, clinicalFeature):
         """Get the data value for the indicated sample and clinical feature"""
+        pass
+
+    def nClinicalFeatures(self):
+        """Return the number of clinical features in this matrix"""
+        pass
+
+    def nSamples(self):
+        """Return the number of samples in this matrix"""
+        pass
+
+    def sampleList(self):
+        """Return the list of samples represented in this matrix"""
+        pass
 
     def setValue(self, sample, cliincalFeature, newValue):
         """Update the value stored for the indicated probe and sample
         """
+        pass
 
-    def nSamples(self):
-        """Return the number of samples in this matrix"""
-
-    def nClinicalFeatures(self):
-        """Return the number of clinical features in this matrix"""
-
-    def validate(self):
-        """Validate this ClinicalMatrix, and return True or False
-        depending on whether or not the object passed validation.  """
-
+    def sortClinicalMatrix(self, cmp=compareSampleIds):
+        """Sort the clinical matrix according to the indicated comparison function"""
+        pass
+        
     def write(self, filename):
         """Write the CinicalMatrix object to the indicated filename"""
+        pass
 
 

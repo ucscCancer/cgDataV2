@@ -1,4 +1,6 @@
-class GenomicSegmentVector():
+import cgDataV2.Exceptions
+
+class GenomicSegmentVector(object):
     """GenomicSegmentVector objects indicate which segments were
     present in the indicated samples, and with what score For example,
     copy number data can be represented as GenomicSegmentVectors.
@@ -22,45 +24,54 @@ class GenomicSegmentVector():
     See Also: GenomicSegmentSet
     """
 
-    __format__ = {
-            "name" : "genomicSegment",
-            "type" : "type",
-            "form" : "table",
-            "columnOrder" : [
-                "id",
-                "chrom",
-                "chrom_start",
-                "chrom_end",
-                "strand",
-                "value"
-            ],
-            "groupKey" : "id",
-            "columnDef" : {
-                "chrom_start" : { "type" : "int" },
-                "chrom_end" :   { "type" : "int" },
-                "value" : { "type" : "float" }
-            }
-        }
+#    __format__ = {
+#            "name" : "genomicSegment",
+#            "type" : "type",
+#            "form" : "table",
+#            "columnOrder" : [
+#                "id",
+#                "chrom",
+#                "chrom_start",
+#                "chrom_end",
+#                "strand",
+#                "value"
+#            ],
+#            "groupKey" : "id",
+#            "columnDef" : {
+#                "chrom_start" : { "type" : "int" },
+#                "chrom_end" :   { "type" : "int" },
+#                "value" : { "type" : "float" }
+#            }
+#        }
 
-    def __init__(self, line=None, validate=True):
+    def __init__(self, line=None):
         """Creates a new GenomicSegmentVector object.  If line is
         None, an empty object is returned.  Else, the contents of the
         GenomicSegmentVector are parsed from the line, which should
         contain the indicated fields and be whitespace-delimited.
-        If validate is True, then the validator is run on the object
-        as a final initialization step.  If successful, the object is
-        returned.  Else, None is returned.
+        As a final initialization step, the object is validated.  If
+        validation fails, a ValidationFailed exception is thrown.
         """
+        pass
 
-    def validate(self):
-        """Validate this GenomicSegmentVector. Return True or False
-        depending on whether or not the object passed validation.  """
+    def __validate(self):
+        """Validate this GenomicSegmentVector, and throw a ValidationFailed
+        object if unsuccessful.  """
+        pass
 
+    def genomicSegmentVectorCompare(vector1, vector2):
+        """Return the results of comparing vector1 to vector2, comparing each field
+        (id, chrom, chromStart, chromEnd, strand, value) in the order indicated.
+        Use numeric comparison on chromStart, chromEnd, and value, and lexical
+        comparison on all other fields."""
+        pass
+    
     def write(self, filehandle, delimiter="\t"):
         """Write a GenomicSegmentVector object to the indicated
         filehandle.  The data is written in tab-delimited format by
         default.
         """
+        pass
 
 
 

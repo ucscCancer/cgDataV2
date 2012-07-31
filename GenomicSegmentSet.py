@@ -1,4 +1,8 @@
-class GenomicSegmentSet():
+import cgDataV2.Exceptions
+from cgDataV2.GenomicSegmentMetadata import GenomicSegmentMetadata
+from cgDataV2.GenomicSegmentVector import GenomicSegmentVector
+
+class GenomicSegmentSet(object):
     """This class represents a collection of GenomicSegment objects, such
     as a file with GenomicSegment observations.  
 
@@ -13,26 +17,35 @@ class GenomicSegmentSet():
     """
 
 
-    def __init__(self, genomicSegmentMetadata, validate=True):
+    def __init__(self, genomicSegmentMetadata):
         """Given a genomic segment set metadata object, load the
-        corresponding GenomicSegmentSet object.  By default, the new
-        object is validated, and if it fails validation, None is
-        returned.  Otherwise, the GenomicSegmentSet object is returned.  """
+        corresponding GenomicSegmentSet object.  The new object is
+        validated.  If validation fails, a ValidationFailed exception
+        is thrown.
+        """
+        pass
 
-    def sampleList(self):
-        """Return the list of samples represented in this GenonicSegmentSet"""
+    def __validate(self):
+        """Validate this GenomicSegmentSet. If unsuccessful, throw
+        a ValidationFailed exception.
+        """
+        pass
 
     def nSamples(self):
         """Return the number of samples in this GenomicMatrix"""
+        pass
 
-    def validate(self):
-        """Validate this GenomicSegmentSet. Return True or False depending on whether or
-        not the object passed validation.
-        """
+    def sampleList(self):
+        """Return the list of samples represented in this GenonicSegmentSet"""
+        pass
 
+    def sort(self, cmp=GenomicSegmentVector.genomicSegmentVectorCompare):
+        """Sort the genomic segments according to the indicated compare function"""
+        pass
+        
     def write(self, filename):
         """Write the GenomicSegmentSet object to the indicated filename"""
-
+        pass
 
 
 

@@ -1,4 +1,4 @@
-
+import cgDataV2.Exceptions
 from cgDataV2.Metadata import Metadata
 
 class GenomicMetadata(Metadata):
@@ -11,11 +11,17 @@ class GenomicMetadata(Metadata):
         method on the new object and return None if validation fails.
         """
         super(Metadata, self).__init__(filename, validate=validate)
+        pass
 
+    def __validate(self):
+        """Validate, and throw a ValidationFailed exception if unsuccessful"""
+        pass
+    
     def dataProducer(self, newDataProducer=None):
         """Update the data producer if a new data producer is specified
         Return the data producer, or None if not defined.
         """
+        pass
 
     def wrangler(self, newWrangler=None):
         """
@@ -23,6 +29,7 @@ class GenomicMetadata(Metadata):
         Update the wrangler if a new wrangler is specified.
         Return the wrangler, or None if not defined.
         """
+        pass
 
     def redistribution(self, newRedistribution=None):
         """
@@ -31,6 +38,7 @@ class GenomicMetadata(Metadata):
         Update the redistribution flag if a new value is specified
         Return the redistribution flag, or None if not defined.
         """
+        pass
 
     def platform(self, newPlatform=None):
         """
@@ -39,12 +47,14 @@ class GenomicMetadata(Metadata):
         Update the platform if a new platform is specified
         Return the platform, or None if not defined.
         """
+        pass
 
     def articleTitle(self, newArticleTitle=None):
         """ The articleTitle is the title of the original publication
         that describes the experiment that produced the results in the
         file.  Update the articleTitle if a new platform is specified
         Return the platform, or None if not defined.  """
+        pass
 
     def citation(self, newCitation=None):
         """
@@ -53,6 +63,7 @@ class GenomicMetadata(Metadata):
         Update the citation if a new citation is specified
         Return the citation, or None if not defined.
         """
+        pass
 
     def url(self, newUrl=None):
         """
@@ -60,6 +71,7 @@ class GenomicMetadata(Metadata):
         Update the url if a new url is specified
         Return the url, or None if not defined.
         """
+        pass
 
     def normalized(self, newNormalized=None):
         """
@@ -68,6 +80,7 @@ class GenomicMetadata(Metadata):
         Update the normalized if a new normalized is specified
         Return the normalized, or None if not defined.
         """
+        pass
 
     def diseaseAbbr(self, newDisease_abbr=None):
         """
@@ -76,12 +89,14 @@ class GenomicMetadata(Metadata):
         Update the diseaseAbbr if a new value is specified
         Return the diseaseAbbr, or None if not defined.
         """
-
+        pass
+    
     def validate(self):
         """Validate the fields expected in a Genomic Metadata object.
         Return True or False depending on whether or
         not the object passed validation.
         """
+        pass
 
 
 

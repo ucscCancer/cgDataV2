@@ -1,4 +1,7 @@
-class ProbeMapSet():
+import cgDataV2.Exceptions
+from cgDataV2.ProbeMapVector import ProbeMapVector
+
+class ProbeMapSet(object):
     """This class represents a collection of ProbeMap objects, such
     as a file with ProbeMap observations.  
 
@@ -16,24 +19,33 @@ class ProbeMapSet():
     """
 
 
-    def __init__(self, probeMapSetMetadata, validate=True):
+    def __init__(self, probeMapSetMetadata):
         """Given a probeMap set metadata object, load the
-        corresponding ProbeMapSet object.  By default, the new
-        object is validated, and if it fails validation, None is
-        returned.  Otherwise, the ProbeMapSet object is returned.  """
-
-
-    def probeList(self):
-        """Return the list of probes represented in this ProbeMapSet"""
+        corresponding ProbeMapSet object.  Upon creation, the new
+        object is validated, and if it fails validation, a
+        ValidationFailed exception is thrown.
+        """
+        pass
+    
+    def __validate(self):
+        """Validate this ProbeMapSet. If unsuccessful, throw a ValidationFailed
+        exception.
+        """
+        pass
 
     def nProbes(self):
         """Return the number of probes in this ProbeMapSet"""
+        pass
 
-    def validate(self):
-        """Validate this ProbeMapSet. Return True or False depending on whether or
-        not the object passed validation.
-        """
+    def probeList(self):
+        """Return the list of probes represented in this ProbeMapSet"""
+        pass
 
+    def sort(self, cmp=ProbeMapVector.probeMapVectorCompare):
+        """Sort the probe map vectors according to the indicated comparison function"""
+        pass
+    
     def write(self, filename):
         """Write the ProbeMapSet object to the indicated filename"""
+        pass
 

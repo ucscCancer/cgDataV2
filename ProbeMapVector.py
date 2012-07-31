@@ -1,5 +1,6 @@
+import cgDataV2.Exceptions
 
-class ProbeMapVector:
+class ProbeMapVector(object):
     """A ProbeMapVector is a set of mappings that describe the genomic coordinates
     for the probes in a GenomicMatrix object
 
@@ -21,42 +22,50 @@ class ProbeMapVector:
     See Also: ProbeMapSet
     """
 
-    __format__ =  {
-        "name" : "probeMap",
-        "form" : "table",
-        "columnOrder" : [
-            "probe",
-            "aliases",
-            "chrom",
-            "chrom_start",
-            "chrom_end",
-            "strand"
-            ],
-        "primaryKey" : "probe",
-        "columnDef" : {
-            "chrom_start" : { "type" : "int", "index" : 1 },
-            "chrom_end" : { "type" : "int", "index" : 1 }
-            }
-        }
+#    __format__ =  {
+#        "name" : "probeMap",
+#        "form" : "table",
+#        "columnOrder" : [
+#            "probe",
+#            "aliases",
+#            "chrom",
+#            "chrom_start",
+#            "chrom_end",
+#            "strand"
+#            ],
+#        "primaryKey" : "probe",
+#        "columnDef" : {
+#            "chrom_start" : { "type" : "int", "index" : 1 },
+#            "chrom_end" : { "type" : "int", "index" : 1 }
+#            }
+#        }
 
-    def __init__(self, line=None, validate=True):
+    def __init__(self, line=None):
         """Creates a new ProbeMapVector object.  If line is None, an 
         empty object is returned.  Else, the contents of the ProbeMapVector
         are parsed from the line, which should contain the indicated fields
         and be whitespace-delimited
         If the validate flag is set to True, the object is validated as a
-        final initialization step.  If the validation was successful, the new
-        object is returned.  Otherwise, the return value is None.
+        final initialization step.  If validation fails, a ValidationFailed
+        exception is thrown.
+        """
+        pass
+
+
+    def __validate(self):
+        """Validate the object.  If unsuccessful, throw a ValidationFailed
+        exception.
         """
 
-    def validate(self):
-        """Validate this ProbeMapVector. Return True or False depending on whether or
-        not the object passed validation.
-        """
+    def probeMapVectorCompare(vector1, vector2):
+        """Compare the two probe vectors, sorting by the leftmost column first and
+        using additional columns to break ties.  Perform a lexical comparison on all
+        columns except chromStart and chromEnd; perform a numeric comparison on these"""
 
     def write(self, filehandle, delimiter="\t"):
         """Write a ProbeMapVector object to the indicated filehandle.
         The data is written in tab-delimited format by default.
         """
+        pass
 
 
